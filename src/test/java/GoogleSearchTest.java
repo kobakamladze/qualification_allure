@@ -13,16 +13,26 @@ public class GoogleSearchTest {
 
     private WebDriver driver;
 
-//    @BeforeMethod
-//    public void setUp() {
-//        driver = new SafariDriver();
-//    }
+    @Test(groups = "faliing")
+    public void failingTest2() {
+        addNumbersAndCheckEquality(3, 2, 6);
+    }
 
-    @Test
+    @Test(groups = "faliing")
+    public void failingTest1() {
+        compareTwoNumbers(3, 2);
+    }
+
+    @Test(groups = "passing")
+    public void passingTest2() {
+
+    }
+
     @Description("Opens link and ensures element is visible")
     @Owner("Koba Kamladze")
     @Severity(SeverityLevel.MINOR)
-    @Parameters({"netu parametra zdes"})
+    @Parameters({"There is no parameter"})
+    @Test(groups = "passing")
     public void googleSearchTest() {
         navigateToGoogle();
         assertion();
@@ -30,25 +40,27 @@ public class GoogleSearchTest {
     }
 
     @Step("Navigating to the link")
-    public void navigateToGoogle() {
+    private void navigateToGoogle() {
         System.out.println("Opening link -  https://www.google.com");
     }
 
     @Step("Asserting element")
-    public void assertion() {
+    private void assertion() {
         System.out.println("Asserting that element is displayed/");
     }
 
     @Step("Attaching text file")
-    public void attachFile() {
+    private void attachFile() {
         AllureHelper.attachFile("helloworld.txt");
     }
 
-//    @AfterMethod
-//    public void tearDown() {
-////        AllureHelper.attachScreenshot(driver);
-//        if (driver != null) {
-//            driver.quit();
-//        }
-//    }
+    @Step("Add numbers and check equality")
+    private void addNumbersAndCheckEquality(int a, int b, int c) {
+        Assert.assertEquals(a + b, c);
+    }
+
+    @Step("Compare 2 numbers")
+    private void compareTwoNumbers(int a, int b) {
+        Assert.assertTrue(a < b);
+    }
 }
