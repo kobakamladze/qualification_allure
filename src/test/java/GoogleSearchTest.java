@@ -2,6 +2,7 @@
 import io.qameta.allure.*;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -14,8 +15,6 @@ import java.nio.file.Paths;
 
 
 public class GoogleSearchTest {
-
-    private WebDriver driver;
 
     @BeforeSuite
     public void before() {
