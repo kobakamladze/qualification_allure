@@ -1,18 +1,43 @@
+
+import com.google.common.io.Files;
 import io.qameta.allure.*;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.safari.SafariDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+
 
 public class GoogleSearchTest {
 
     private WebDriver driver;
 
+    @BeforeSuite
+    public void before() {
+        String USER_DIR_PATH = System.getProperty("user.dir");
+        Path path = Paths.get(USER_DIR_PATH + "/allure-results/environment.properties");
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(String.valueOf(path)))) {
+            writer.write("Browser=Safari\n");
+            writer.write("Env=QA\n");
+            writer.write("URL=https://test.example.com\n");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Issue("AB-1234")
     @Test(groups = "faliing")
     public void failingTest2() {
         addNumbersAndCheckEquality(3, 2, 6);
