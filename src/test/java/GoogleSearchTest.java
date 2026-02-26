@@ -1,5 +1,4 @@
 
-import com.google.common.io.Files;
 import io.qameta.allure.*;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -8,15 +7,10 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
 
 
 public class GoogleSearchTest {
